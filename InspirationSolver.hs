@@ -70,4 +70,11 @@ find (t:ts) n = case computeTrial t of
 compute :: Int -> [Int] -> Maybe Trial
 compute n nums = find (allTrials nums) n
 
-main = putStrLn $ show $ compute 4 [1,2,3,5]
+main = do
+  putStr "Number to create: "
+  line <- getLine
+  let n = read line
+  putStr "Numbers to work with: "
+  line <- getLine
+  let nums = map read (words line)
+  putStrLn $ show $ compute n nums
