@@ -5,10 +5,23 @@ isDivisibleBy _ 0 = False
 isDivisibleBy a b = (mod a b) == 0
 
 data Operator = Plus | Minus | Times | Divide
-              deriving (Eq, Show)
+              deriving (Eq)
+
+instance Show Operator where
+  show Plus   = "+"
+  show Minus  = "-"
+  show Times  = "*"
+  show Divide = "/"
 
 data Trial = Trial [Operator] [Int]
-           deriving (Eq, Show)
+           deriving (Eq)
+
+instance Show Trial where
+  show (Trial ops nums) = unwords [
+    "(", show (nums !! 0), show (ops !! 0), show (nums !! 1), ")",
+    show (ops !! 1),
+    "(", show (nums !! 2), show (ops !! 2), show (nums !! 3), ")"
+    ]
 
 apply :: Operator -> Int -> Int -> Maybe Int
 apply Plus   a b = Just (a + b)
