@@ -1,4 +1,5 @@
 import Data.List (permutations)
+import System.IO
 
 isDivisibleBy :: Int -> Int -> Bool
 isDivisibleBy _ 0 = False
@@ -72,9 +73,11 @@ compute n nums = find (allTrials nums) n
 
 main = do
   putStr "Number to create: "
+  hFlush System.IO.stdout
   line <- getLine
   let n = read line
   putStr "Numbers to work with: "
+  hFlush System.IO.stdout
   line <- getLine
   let nums = map read (words line)
   putStrLn $ show $ compute n nums
