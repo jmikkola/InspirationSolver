@@ -1,2 +1,2 @@
-inspiration-solver: inspiration-solver.hs
+InspirationSolver: InspirationSolver.hs
 	ghc --make *.hs
